@@ -13,6 +13,10 @@ import TuitsController from './controllers/tuits/tuits-controller.js'
 import session from 'express-session'
 import AuthController from "./users/auth-controller.js"
 
+console.log("NODE_ENV", process.env.NODE_ENV)
+console.log("FRONTEND_URL", process.env.FRONTEND_URL)
+console.log("PORT", process.env.PORT)
+
 const app = express()
 app.use(express.json()) // parse JSON body, middleware
 
