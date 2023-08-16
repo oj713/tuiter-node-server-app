@@ -13,6 +13,11 @@ import TuitsController from './controllers/tuits/tuits-controller.js'
 import session from 'express-session'
 import AuthController from "./users/auth-controller.js"
 
+import mongoose from 'mongoose'
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
+console.log(CONNECTION_STRING)
+mongoose.connect(CONNECTION_STRING) //"mongodb://127.0.0.1:27017/tuiter")
+
 const app = express()
 app.use(express.json()) // parse JSON body, middleware
 
