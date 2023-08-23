@@ -16,9 +16,7 @@ const AuthController = (app) => {
     const login    = async (req, res) => {
         const username = req.body.username
         const password = req.body.password
-        console.log(username," ", password)
         const user = await usersDao.findUserByCredentials(username, password)
-        console.log(user)
         if (user) {
             req.session["currentUser"] = user
             res.json(user)
@@ -51,8 +49,8 @@ const AuthController = (app) => {
     app.post("/api/users/login",    login)
     app.post("/api/users/profile",  profile)
     app.post("/api/users/logout",   logout)
-    app.put ("/api/users/:username", update)
-    app.get ("/api/users", findAll)
+    //app.put ("/api/users/:username", update)
+    //app.get ("/api/users", findAll)
 }
 
 export default AuthController

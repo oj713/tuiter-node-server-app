@@ -3,25 +3,21 @@
 import * as usersDao from "./users-dao.js"
 
 const UserController = (app) => {
-    app.get('/api/users', findUsers)
-    // colon declares placeholder
-    app.get('/api/users/:uid', findUserById)
-    app.post('/api/users', createUser) // map URL pattern to handler function
-    app.delete('/api/users/:uid', deleteUser)
-    app.put('/api/users/:uid', updateUser)
+  app.get('/api/users', findUsers)
+  // colon declares placeholder
+  app.get('/api/users/:uid', findUserById)
+  app.post('/api/users', createUser) // map URL pattern to handler function
+  app.delete('/api/users/:uid', deleteUser)
+  app.put('/api/users/:uid', updateUser)
 }
 
 const updateUser = async (req, res) => {
-    const id = req.params['uid']
-    const status = await usersDao.updateUser(id, req.body);
-    const user = await usersDao.findUserById(id);
-    //const updates = req.body
-    // users = users.map((usr) => 
-    //     usr._id === userId ? {...usr, ...updates} : usr
-    // )
-    req.session['currentUser'] = user
-    res.json(status)
-}
+  const id = req.params['uid'];
+  const status = await usersDao.updateUser(id, req.body);
+  const user = await usersDao.findUserById(id);
+  req.session["currentUser"] = user;
+  res.json(status);
+};
 
 const deleteUser = async (req, res) => {
     const id = req.params['uid']
